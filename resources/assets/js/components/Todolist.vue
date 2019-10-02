@@ -85,7 +85,7 @@ export default {
     }
   },
   created() {
-    //this.read();
+    this.read();
   }
 }
 </script>

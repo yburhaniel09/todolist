@@ -45125,7 +45125,7 @@ var taskId = 0;
     }
   },
   created: function created() {
-    //this.read();
+    this.read();
   }
 });
 
