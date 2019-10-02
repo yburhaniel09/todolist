@@ -45102,7 +45102,7 @@ var taskId = 0;
           edit: false
         };
         this.tasks.push(addtask);
-        this.newTask = '';
+        //this.newTask = '';
         window.axios.post('/api/cruds/create', {
           title: this.newTask,
           completed: false,
@@ -45110,8 +45110,6 @@ var taskId = 0;
         }).then(function (response) {
           //this.$router.push({name: 'cruds'});
           console.log('Success');
-        }).catch(function (error) {
-          console.warn(error);
         });
       }
     },

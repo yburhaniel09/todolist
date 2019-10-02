@@ -64,7 +64,7 @@ export default {
           edit: false
         };
         this.tasks.push(addtask);
-        this.newTask = '';
+        //this.newTask = '';
         window.axios.post('/api/cruds/create', {
           title: this.newTask,
           completed: false,
@@ -72,8 +72,6 @@ export default {
         }).then((response) => {
           //this.$router.push({name: 'cruds'});
           console.log('Success');
-        }).catch((error) => {
-            console.warn(error);
         });
       }
     },
