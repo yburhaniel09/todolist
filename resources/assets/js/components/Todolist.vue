@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     read() {
-      window.axios.get('/home').then(({ data }) => {
+      window.axios.get('/api/cruds').then(({ data }) => {
         console.log(data)
       });
     },

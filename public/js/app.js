@@ -45078,7 +45078,7 @@ var taskId = 0;
 
   methods: {
     read: function read() {
-      window.axios.get('/home').then(function (_ref) {
+      window.axios.get('/api/cruds').then(function (_ref) {
         var data = _ref.data;
 
         console.log(data);
