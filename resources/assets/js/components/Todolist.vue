@@ -68,8 +68,7 @@ export default {
         window.axios.post('/api/cruds/create', {
           title: this.newTask,
           completed: false,
-          userId: 1,
-          id: 4
+          userId: "1"
         }).then((response) => {
           this.$router.push({name: 'cruds'});
         });

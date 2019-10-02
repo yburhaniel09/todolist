@@ -51,8 +51,7 @@ class HomeController extends Controller
         $todo = new Todo([
             'title' => $request->get('title'),
             'userid' => $request->get('userId'),
-            'isDone' => $request->get('completed'),
-            'id' => $request->get('id')
+            'isDone' => $request->get('completed')
         ]);
     
         $todo->save();
