@@ -48,11 +48,10 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $todo = new Todo([
-            'title' => $request->get('title'),
-            'userid' => $request->get('userId'),
-            'isDone' => $request->get('completed')
-        ]);
+        $todo = new Todo();
+        $todo->title = $request->title;
+        $todo->userid = $request->userId;
+        $todo->isDone = $request->completed;
     
         $todo->save();
     
