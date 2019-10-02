@@ -55,11 +55,6 @@ export default {
         });
       });
     },
-    post(addtask) {
-      this.axios.post('/api/cruds/create', addtask).then((response) => {
-        this.$router.push({name: 'cruds'});
-      });
-    },
     addTask() {
       if (this.newTask) {
         let addtask = {
@@ -70,7 +65,9 @@ export default {
         };
         this.tasks.push(addtask);
         this.newTask = '';
-        this.post(addtask);
+        window.axios.post('/api/cruds/create', addtask).then((response) => {
+          this.$router.push({name: 'cruds'});
+        });
       }
     },
     removeTask (index) {
@@ -83,7 +80,7 @@ export default {
     }
   },
   created() {
-    this.read();
+    //this.read();
   }
 }
 </script>

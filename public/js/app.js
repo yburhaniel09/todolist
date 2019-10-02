@@ -45093,14 +45093,9 @@ var taskId = 0;
         });
       });
     },
-    post: function post(addtask) {
+    addTask: function addTask() {
       var _this2 = this;
 
-      this.axios.post('/api/cruds/create', addtask).then(function (response) {
-        _this2.$router.push({ name: 'cruds' });
-      });
-    },
-    addTask: function addTask() {
       if (this.newTask) {
         var addtask = {
           title: this.newTask,
@@ -45110,7 +45105,9 @@ var taskId = 0;
         };
         this.tasks.push(addtask);
         this.newTask = '';
-        this.post(addtask);
+        window.axios.post('/api/cruds/create', addtask).then(function (response) {
+          _this2.$router.push({ name: 'cruds' });
+        });
       }
     },
     removeTask: function removeTask(index) {
@@ -45123,7 +45120,7 @@ var taskId = 0;
     }
   },
   created: function created() {
-    this.read();
+    //this.read();
   }
 });
 
