@@ -45,7 +45,14 @@ export default {
   methods: {
     read() {
       window.axios.get('/api/cruds').then(({ data }) => {
-        console.log(data)
+        data.forEach(crud => {
+          this.tasks.push({
+            id: crud.id,
+            title: crud.title,
+            completed: crud.isDone,
+            edit: false
+          });
+        });
       });
     },
     addTask() {

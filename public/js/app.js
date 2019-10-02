@@ -45078,10 +45078,19 @@ var taskId = 0;
 
   methods: {
     read: function read() {
+      var _this = this;
+
       window.axios.get('/api/cruds').then(function (_ref) {
         var data = _ref.data;
 
-        console.log(data);
+        data.forEach(function (crud) {
+          _this.tasks.push({
+            id: crud.id,
+            title: crud.title,
+            completed: crud.isDone,
+            edit: false
+          });
+        });
       });
     },
     addTask: function addTask() {
