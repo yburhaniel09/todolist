@@ -50,13 +50,13 @@ class HomeController extends Controller
     {
         $todo = new Todo([
             'title' => $request->get('title'),
-            'userId' => 1,
-            'isDone' => false
-          ]);
+            'userId' => $request->get('userId'),
+            'isDone' => $request->get('completed')
+        ]);
     
-          $todo->save();
+        $todo->save();
     
-          return response()->json('successfully added');
+        return response()->json('successfully added');
     }
 
     /**

@@ -45105,7 +45105,12 @@ var taskId = 0;
         };
         this.tasks.push(addtask);
         this.newTask = '';
-        window.axios.post('/api/cruds/create', addtask).then(function (response) {
+        window.axios.post('/api/cruds/create', {
+          title: this.newTask,
+          completed: false,
+          userId: 1,
+          id: 4
+        }).then(function (response) {
           _this2.$router.push({ name: 'cruds' });
         });
       }
