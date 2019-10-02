@@ -45110,6 +45110,8 @@ var taskId = 0;
         }).then(function (response) {
           //this.$router.push({name: 'cruds'});
           console.log('Success');
+        }).catch(function (error) {
+          console.warn(error);
         });
       }
     },

@@ -72,6 +72,8 @@ export default {
         }).then((response) => {
           //this.$router.push({name: 'cruds'});
           console.log('Success');
+        }).catch((error) => {
+            console.warn(error);
         });
       }
     },
