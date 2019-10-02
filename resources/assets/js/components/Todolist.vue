@@ -55,15 +55,22 @@ export default {
         });
       });
     },
+    post(addtask) {
+      this.axios.post('/api/cruds/create', addtask).then((response) => {
+        this.$router.push({name: 'cruds'});
+      });
+    },
     addTask() {
       if (this.newTask) {
-        this.tasks.push({
+        let addtask = {
           title: this.newTask,
           completed: false,
           id: taskId++,
           edit: false
-        });
+        };
+        this.tasks.push(addtask);
         this.newTask = '';
+        this.post(addtask);
       }
     },
     removeTask (index) {

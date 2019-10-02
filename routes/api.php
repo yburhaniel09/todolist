@@ -17,6 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/cruds', 'HomeController', [
-    'except' => ['edit', 'show', 'store']
-]);
+
+Route::post('/cruds/create', 'HomeController@store');
+Route::get('/cruds/edit/{id}', 'HomeController@edit');
+Route::post('/cruds/update/{id}', 'HomeController@update');
+Route::delete('/cruds/delete/{id}', 'HomeController@delete');
+Route::get('/cruds', 'HomeController@index');

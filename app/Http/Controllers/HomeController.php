@@ -48,7 +48,15 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $todo = new Todo([
+            'title' => $request->get('title'),
+            'userId' => 1,
+            'isDone' => false
+          ]);
+    
+          $todo->save();
+    
+          return response()->json('successfully added');
     }
 
     /**
