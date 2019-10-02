@@ -45094,8 +45094,6 @@ var taskId = 0;
       });
     },
     addTask: function addTask() {
-      var _this2 = this;
-
       if (this.newTask) {
         var addtask = {
           title: this.newTask,
@@ -45110,7 +45108,8 @@ var taskId = 0;
           completed: false,
           userId: "1"
         }).then(function (response) {
-          _this2.$router.push({ name: 'cruds' });
+          //this.$router.push({name: 'cruds'});
+          console.log('Success');
         });
       }
     },
@@ -45124,7 +45123,7 @@ var taskId = 0;
     }
   },
   created: function created() {
-    this.read();
+    //this.read();
   }
 });
 

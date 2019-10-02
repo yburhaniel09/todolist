@@ -70,7 +70,8 @@ export default {
           completed: false,
           userId: "1"
         }).then((response) => {
-          this.$router.push({name: 'cruds'});
+          //this.$router.push({name: 'cruds'});
+          console.log('Success');
         });
       }
     },
@@ -84,7 +85,7 @@ export default {
     }
   },
   created() {
-    this.read();
+    //this.read();
   }
 }
 </script>
