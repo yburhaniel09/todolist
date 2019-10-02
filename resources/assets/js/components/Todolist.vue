@@ -43,6 +43,11 @@ export default {
     }
   },
   methods: {
+    read() {
+      window.axios.get('/home').then(({ data }) => {
+        console.log(data)
+      });
+    },
     addTask() {
       if (this.newTask) {
         this.tasks.push({
@@ -55,13 +60,16 @@ export default {
       }
     },
     removeTask (index) {
-		this.tasks = this.tasks.filter(task => {
-			return task.id !== index
-		})
+      this.tasks = this.tasks.filter(task => {
+        return task.id !== index
+      })
     },
     editTask (task){
         task.edit = false;
     }
+  },
+  created() {
+    this.read();
   }
 }
 </script>
