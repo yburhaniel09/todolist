@@ -44570,7 +44570,7 @@ exports = module.exports = __webpack_require__(42)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\ndiv.add[data-v-088325ca] {\n  text-align: center;\n}\ndiv.list[data-v-088325ca] {\n  margin-top: 10px;\n}\ndiv.save[data-v-088325ca] {\n  margin-top: 10px;\n  text-align: center;\n}\nli[data-v-088325ca] {\n  list-style-type: none;\n}\n.taskList[data-v-088325ca] {\n  width: 550px;\n}\n.button[data-v-088325ca] {\n  width: 80px;\n}\n.savebutton[data-v-088325ca] {\n  width: 120px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -45056,6 +45056,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 var taskId = 0;
 
@@ -45104,9 +45108,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("To-do List")]),
-    _vm._v(" "),
-    _c("div", [
+    _c("div", { staticClass: "add" }, [
       _c("input", {
         directives: [
           {
@@ -45116,6 +45118,7 @@ var render = function() {
             expression: "newTask"
           }
         ],
+        staticClass: "taskList",
         attrs: { type: "text", placeholder: "New task" },
         domProps: { value: _vm.newTask },
         on: {
@@ -45137,20 +45140,13 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
+      { staticClass: "list" },
       _vm._l(_vm.tasks, function(task, index) {
         return _c("li", { key: index, attrs: { task: task } }, [
           task.edit == false
-            ? _c(
-                "label",
-                {
-                  on: {
-                    dblclick: function($event) {
-                      task.edit = true
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(task.title))]
-              )
+            ? _c("label", { staticClass: "taskList" }, [
+                _vm._v(_vm._s(task.title))
+              ])
             : _vm._e(),
           _vm._v(" "),
           task.edit == true
@@ -45163,6 +45159,7 @@ var render = function() {
                     expression: "task.title"
                   }
                 ],
+                staticClass: "taskList",
                 attrs: { type: "text" },
                 domProps: { value: task.title },
                 on: {
@@ -45185,9 +45182,40 @@ var render = function() {
               })
             : _vm._e(),
           _vm._v(" "),
+          task.edit == false
+            ? _c(
+                "button",
+                {
+                  staticClass: "button",
+                  on: {
+                    click: function($event) {
+                      task.edit = true
+                    }
+                  }
+                },
+                [_vm._v("Edit")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          task.edit == true
+            ? _c(
+                "button",
+                {
+                  staticClass: "button",
+                  on: {
+                    click: function($event) {
+                      task.edit = false
+                    }
+                  }
+                },
+                [_vm._v("Save")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "button",
             {
+              staticClass: "button",
               on: {
                 click: function($event) {
                   return _vm.removeTask(task.id)
@@ -45199,10 +45227,21 @@ var render = function() {
         ])
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "save" }, [
+      _c("button", { staticClass: "savebutton" }, [_vm._v("Save To Do List")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

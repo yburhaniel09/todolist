@@ -1,9 +1,7 @@
 <template>
     <div>
-        <h1>To-do List</h1>
-
-        <div>
-            <input type="text" v-model="newTask" placeholder="New task">
+        <div class="add">
+            <input class="taskList" type="text" v-model="newTask" placeholder="New task">
             <span class="input-group-button">
                 <button class="button" @click="addTask">
                     Add
@@ -11,12 +9,18 @@
             </span>
         </div>
 
-        <div>
+        <div class="list">
             <li v-for="(task, index) in tasks" :task="task" :key="index">
-                <label @dblclick="task.edit = true" v-if="task.edit == false">{{task.title}}</label>
-                <input @keyup.enter="editTask(task)" v-if="task.edit == true" type="text" v-model="task.title"/>
-                <button @click="removeTask(task.id)">Delete</button>
+                <label class="taskList" v-if="task.edit == false">{{task.title}}</label>
+                <input class="taskList" @keyup.enter="editTask(task)" v-if="task.edit == true" type="text" v-model="task.title"/>
+                <button class="button" @click="task.edit = true" v-if="task.edit == false">Edit</button>
+                <button class="button" @click="task.edit = false" v-if="task.edit == true">Save</button>
+                <button class="button" @click="removeTask(task.id)">Delete</button>
             </li>
+        </div>
+
+        <div class="save">
+            <button class="savebutton">Save To Do List</button>
         </div>
     </div>
 </template>
@@ -63,5 +67,34 @@ export default {
 </script>
 
 <style scoped>
+  div.add {
+    text-align: center;
+  }
+
+  div.list {
+    margin-top: 10px;
+  }
+
+  div.save {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  .taskList {
+    width: 550px;
+  }
+
+  .button {
+    width: 80px;
+  }
+
+  .savebutton {
+    width: 120px;
+  }
+
 
 </style>
