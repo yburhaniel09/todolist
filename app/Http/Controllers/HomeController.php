@@ -48,14 +48,14 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $todo = Todo::create([
+        $todo = new Todo([
             'title' => $request->get('title'),
-            'userId' => $request->get('userId'),
+            'userid' => $request->get('userId'),
             'isDone' => $request->get('completed'),
             'id' => $request->get('id')
         ]);
     
-       // $todo->save();
+        $todo->save();
     
         return response()->json('successfully added');
     }
