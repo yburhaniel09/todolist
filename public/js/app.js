@@ -45056,10 +45056,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
@@ -45078,6 +45074,7 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
       window.axios.post('/api/cruds', { userid: this.$userId }).then(function (_ref) {
         var data = _ref.data;
 
+        _this.tasks = [];
         data.forEach(function (crud) {
           _this.tasks.push({
             id: crud.id,
@@ -45120,6 +45117,7 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
           return task.id === id;
         });
         _this4.tasks.splice(index, 1);
+        console.log('Success');
       });
     }
   },
@@ -45247,21 +45245,10 @@ var render = function() {
         ])
       }),
       0
-    ),
-    _vm._v(" "),
-    _vm._m(0)
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "save" }, [
-      _c("button", { staticClass: "savebutton" }, [_vm._v("Save To Do List")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

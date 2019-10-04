@@ -18,10 +18,6 @@
                 <button class="button" @click="del(task.id)">Delete</button>
             </li>
         </div>
-
-        <div class="save">
-            <button class="savebutton">Save To Do List</button>
-        </div>
     </div>
 </template>
 
@@ -38,6 +34,7 @@ export default {
   methods: {
     read() {
       window.axios.post('/api/cruds', {userid: this.$userId}).then(({ data }) => {
+        this.tasks = [];
         data.forEach(crud => {
           this.tasks.push({
             id: crud.id,
@@ -70,6 +67,7 @@ export default {
       window.axios.post(`/api/cruds/delete/${id}`).then(() => {
         let index = this.tasks.findIndex(task => task.id === id);
         this.tasks.splice(index, 1);
+        console.log('Success');
       });
     }
   },
