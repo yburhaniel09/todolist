@@ -26,7 +26,6 @@
 </template>
 
 <script>
-let taskId = 0
 Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
 export default {
