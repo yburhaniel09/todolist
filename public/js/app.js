@@ -45120,7 +45120,7 @@ var taskId = 0;
     del: function del(id) {
       var _this3 = this;
 
-      window.axios.delete('/api/cruds/delete/' + id).then(function () {
+      window.axios.post('/api/cruds/delete/' + id).then(function () {
         var index = _this3.tasks.findIndex(function (task) {
           return task.id === id;
         });

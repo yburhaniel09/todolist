@@ -21,5 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/cruds/create', 'HomeController@store');
 Route::get('/cruds/edit/{id}', 'HomeController@edit');
 Route::post('/cruds/update/{id}', 'HomeController@update');
-Route::delete('/cruds/delete/{id}', 'HomeController@delete');
+Route::post('/cruds/delete/{id}', 'HomeController@delete');
 Route::get('/cruds', 'HomeController@index');

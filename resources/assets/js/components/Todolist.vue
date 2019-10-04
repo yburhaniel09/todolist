@@ -74,7 +74,7 @@ export default {
       });
     },
     del(id) {
-    window.axios.delete(`/api/cruds/delete/${id}`).then(() => {
+      window.axios.post(`/api/cruds/delete/${id}`).then(() => {
         let index = this.tasks.findIndex(task => task.id === id);
         this.tasks.splice(index, 1);
       });

@@ -102,9 +102,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        Todo::destroy($id);
+        $todo = Todo::find($id)->delete();
         return response(null, Response::HTTP_OK);
     }
 }
