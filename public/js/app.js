@@ -45116,7 +45116,7 @@ var taskId = 0;
       task.edit = false;
     },
     update: function update(id, title) {
-      window.axios.put('/api/cruds/update/' + id, { title: title }).then(function () {
+      window.axios.post('/api/cruds/update/' + id, { title: title }).then(function () {
         task.edit = false;
         console.log('Success');
       });
