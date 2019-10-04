@@ -103,7 +103,23 @@ class HomeController extends Controller
         $todo->save();
 
         return response(null, Response::HTTP_OK);
-            }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateDone(Request $request, $id)
+    {
+        $todo = Todo::findOrFail($id);
+        $todo->isDone = $request->completed;
+        $todo->save();
+
+        return response(null, Response::HTTP_OK);
+    }
 
     /**
      * Remove the specified resource from storage.

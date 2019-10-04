@@ -44570,7 +44570,7 @@ exports = module.exports = __webpack_require__(42)(false);
 
 
 // module
-exports.push([module.i, "\ndiv.add[data-v-088325ca] {\n  text-align: center;\n}\ndiv.list[data-v-088325ca] {\n  margin-top: 10px;\n}\ndiv.save[data-v-088325ca] {\n  margin-top: 10px;\n  text-align: center;\n}\nli[data-v-088325ca] {\n  list-style-type: none;\n}\n.taskList[data-v-088325ca] {\n  width: 550px;\n}\n.button[data-v-088325ca] {\n  width: 80px;\n}\n.savebutton[data-v-088325ca] {\n  width: 120px;\n}\n\n\n", ""]);
+exports.push([module.i, "\ndiv.add[data-v-088325ca] {\n  text-align: center;\n}\ndiv.list[data-v-088325ca] {\n  margin-top: 10px;\n}\ndiv.save[data-v-088325ca] {\n  margin-top: 10px;\n  text-align: center;\n}\nli[data-v-088325ca] {\n  list-style-type: none;\n}\n.taskList[data-v-088325ca] {\n  width: 550px;\n}\n.done[data-v-088325ca] {\n  width: 550px;\n  text-decoration: line-through;\n}\n.notDone[data-v-088325ca] {\n  width: 550px;\n  text-decoration: none;\n}\n.button[data-v-088325ca] {\n  width: 80px;\n}\n.savebutton[data-v-088325ca] {\n  width: 120px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -45056,6 +45056,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
@@ -45109,14 +45111,24 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
         console.log('Success');
       });
     },
-    del: function del(id) {
+    updateDone: function updateDone(id, completed) {
       var _this4 = this;
 
+      window.axios.post('/api/cruds/updateDone/' + id, { completed: !completed }).then(function () {
+        _this4.tasks.find(function (task) {
+          return task.id === id;
+        }).completed = !completed;
+        console.log('Success');
+      });
+    },
+    del: function del(id) {
+      var _this5 = this;
+
       window.axios.post('/api/cruds/delete/' + id).then(function () {
-        var index = _this4.tasks.findIndex(function (task) {
+        var index = _this5.tasks.findIndex(function (task) {
           return task.id === id;
         });
-        _this4.tasks.splice(index, 1);
+        _this5.tasks.splice(index, 1);
         console.log('Success');
       });
     }
@@ -45171,9 +45183,21 @@ var render = function() {
       _vm._l(_vm.tasks, function(task, index) {
         return _c("li", { key: index, attrs: { task: task } }, [
           task.edit == false
-            ? _c("label", { staticClass: "taskList" }, [
-                _vm._v(_vm._s(task.title))
-              ])
+            ? _c(
+                "label",
+                { class: { done: task.completed, notDone: !task.completed } },
+                [
+                  _c("input", {
+                    attrs: { type: "checkbox" },
+                    on: {
+                      click: function($event) {
+                        return _vm.updateDone(task.id, task.completed)
+                      }
+                    }
+                  }),
+                  _vm._v(" " + _vm._s(task.title) + "\n            ")
+                ]
+              )
             : _vm._e(),
           _vm._v(" "),
           task.edit == true
