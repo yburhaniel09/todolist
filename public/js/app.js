@@ -45114,6 +45114,12 @@ var taskId = 0;
     },
     editTask: function editTask(task) {
       task.edit = false;
+    },
+    update: function update(id, title) {
+      window.axios.put('/api/cruds/' + id, { title: title }).then(function () {
+        task.edit = false;
+        console.log('Success');
+      });
     }
   },
   created: function created() {
@@ -45226,7 +45232,7 @@ var render = function() {
                   staticClass: "button",
                   on: {
                     click: function($event) {
-                      task.edit = false
+                      return _vm.update(task.id, task.title)
                     }
                   }
                 },

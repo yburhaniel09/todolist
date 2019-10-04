@@ -89,8 +89,12 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $todo = Todo::findOrFail($id);
+        $todo->title = $request->title;
+        $todo->save();
+
+        return response(null, Response::HTTP_OK);
+            }
 
     /**
      * Remove the specified resource from storage.

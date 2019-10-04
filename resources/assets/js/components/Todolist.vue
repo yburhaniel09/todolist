@@ -14,7 +14,7 @@
                 <label class="taskList" v-if="task.edit == false">{{task.title}}</label>
                 <input class="taskList" @keyup.enter="editTask(task)" v-if="task.edit == true" type="text" v-model="task.title"/>
                 <button class="button" @click="task.edit = true" v-if="task.edit == false">Edit</button>
-                <button class="button" @click="task.edit = false" v-if="task.edit == true">Save</button>
+                <button class="button" @click="update(task.id, task.title)" v-if="task.edit == true">Save</button>
                 <button class="button" @click="removeTask(task.id)">Delete</button>
             </li>
         </div>
@@ -74,6 +74,12 @@ export default {
     },
     editTask (task){
         task.edit = false;
+    },
+    update(id, title) {
+      window.axios.put(`/api/cruds/${id}`, { title }).then(() => {
+        task.edit = false;
+        console.log('Success');
+      });
     }
   },
   created() {
