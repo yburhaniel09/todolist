@@ -32,14 +32,7 @@ export default {
   data () {
     return {
         newTask: '',
-        tasks: [
-			{
-                title: 'Learn Vue',
-                completed: false,
-                id: taskId++,
-                edit: false
-			}
-		]
+        tasks: []
     }
   },
   methods: {

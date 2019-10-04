@@ -45067,12 +45067,7 @@ var taskId = 0;
   data: function data() {
     return {
       newTask: '',
-      tasks: [{
-        title: 'Learn Vue',
-        completed: false,
-        id: taskId++,
-        edit: false
-      }]
+      tasks: []
     };
   },
 
@@ -45122,7 +45117,7 @@ var taskId = 0;
     }
   },
   created: function created() {
-    //this.read();
+    this.read();
   }
 });
 
