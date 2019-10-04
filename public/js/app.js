@@ -44570,7 +44570,7 @@ exports = module.exports = __webpack_require__(42)(false);
 
 
 // module
-exports.push([module.i, "\ndiv.add[data-v-088325ca] {\n  text-align: center;\n}\ndiv.list[data-v-088325ca] {\n  margin-top: 10px;\n}\ndiv.save[data-v-088325ca] {\n  margin-top: 10px;\n  text-align: center;\n}\nli[data-v-088325ca] {\n  list-style-type: none;\n}\n.taskList[data-v-088325ca] {\n  width: 550px;\n}\n.done[data-v-088325ca] {\n  width: 550px;\n  text-decoration: line-through;\n}\n.notDone[data-v-088325ca] {\n  width: 550px;\n  text-decoration: none;\n}\n.button[data-v-088325ca] {\n  width: 80px;\n}\n.savebutton[data-v-088325ca] {\n  width: 120px;\n}\n\n\n", ""]);
+exports.push([module.i, "\ndiv.add[data-v-088325ca] {\n  text-align: center;\n}\ndiv.list[data-v-088325ca] {\n  margin-top: 10px;\n}\ndiv.save[data-v-088325ca] {\n  margin-top: 10px;\n  text-align: center;\n}\nli[data-v-088325ca] {\n  list-style-type: none;\n}\n.taskList[data-v-088325ca] {\n  width: 550px;\n}\n.done[data-v-088325ca] {\n  width: 550px;\n  text-decoration: line-through;\n  color: gray;\n}\n.notDone[data-v-088325ca] {\n  width: 550px;\n  text-decoration: none;\n}\n.button[data-v-088325ca] {\n  width: 80px;\n}\n.savebutton[data-v-088325ca] {\n  width: 120px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -45185,17 +45185,18 @@ var render = function() {
           task.edit == false
             ? _c(
                 "label",
-                { class: { done: task.completed, notDone: !task.completed } },
-                [
-                  _c("input", {
-                    attrs: { type: "checkbox" },
-                    on: {
-                      click: function($event) {
-                        return _vm.updateDone(task.id, task.completed)
-                      }
+                {
+                  class: { done: task.completed, notDone: !task.completed },
+                  on: {
+                    dblclick: function($event) {
+                      return _vm.updateDone(task.id, task.completed)
                     }
-                  }),
-                  _vm._v(" " + _vm._s(task.title) + "\n            ")
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n              " + _vm._s(task.title) + "\n            "
+                  )
                 ]
               )
             : _vm._e(),
