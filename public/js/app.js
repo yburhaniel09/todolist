@@ -45112,12 +45112,13 @@ var taskId = 0;
         return task.id !== index;
       });
     },
-    editTask: function editTask(task) {
-      task.edit = false;
-    },
     update: function update(id, title) {
+      var _this2 = this;
+
       window.axios.post('/api/cruds/update/' + id, { title: title }).then(function () {
-        task.edit = false;
+        _this2.tasks.find(function (task) {
+          return task.id === id;
+        }).edit = false;
         console.log('Success');
       });
     }
@@ -45191,15 +45192,6 @@ var render = function() {
                 attrs: { type: "text" },
                 domProps: { value: task.title },
                 on: {
-                  keyup: function($event) {
-                    if (
-                      !$event.type.indexOf("key") &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
-                    }
-                    return _vm.editTask(task)
-                  },
                   input: function($event) {
                     if ($event.target.composing) {
                       return

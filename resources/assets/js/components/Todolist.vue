@@ -12,7 +12,7 @@
         <div class="list">
             <li v-for="(task, index) in tasks" :task="task" :key="index">
                 <label class="taskList" v-if="task.edit == false">{{task.title}}</label>
-                <input class="taskList" @keyup.enter="editTask(task)" v-if="task.edit == true" type="text" v-model="task.title"/>
+                <input class="taskList" v-if="task.edit == true" type="text" v-model="task.title"/>
                 <button class="button" @click="task.edit = true" v-if="task.edit == false">Edit</button>
                 <button class="button" @click="update(task.id, task.title)" v-if="task.edit == true">Save</button>
                 <button class="button" @click="removeTask(task.id)">Delete</button>
@@ -72,12 +72,9 @@ export default {
         return task.id !== index
       })
     },
-    editTask (task){
-        task.edit = false;
-    },
     update(id, title) {
       window.axios.post(`/api/cruds/update/${id}`, { title }).then(() => {
-        task.edit = false;
+        this.tasks.find(task => task.id === id).edit = false;
         console.log('Success');
       });
     }
