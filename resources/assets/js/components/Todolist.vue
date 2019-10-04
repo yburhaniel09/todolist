@@ -76,7 +76,7 @@ export default {
         task.edit = false;
     },
     update(id, title) {
-      window.axios.put(`/api/cruds/${id}`, { title }).then(() => {
+      window.axios.put(`/api/cruds/update/${id}`, { title }).then(() => {
         task.edit = false;
         console.log('Success');
       });
