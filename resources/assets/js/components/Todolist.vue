@@ -12,7 +12,7 @@
         <div class="list">
             <li v-for="(task, index) in tasks" :task="task" :key="index">
                 <label :class="{ 'done': task.completed, 'notDone': !task.completed }" v-if="task.edit == false">
-                  <input type="checkbox" @click="updateDone(task.id, task.completed)"> {{task.title}}
+                  <input type="checkbox" @click="updateDone(task.id, task.completed)" v-model="task.completed"> {{task.title}}
                 </label>
                 <input class="taskList" v-if="task.edit == true" type="text" v-model="task.title"/>
                 <button class="button" @click="task.edit = true" v-if="task.edit == false">Edit</button>

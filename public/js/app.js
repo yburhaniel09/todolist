@@ -45188,10 +45188,45 @@ var render = function() {
                 { class: { done: task.completed, notDone: !task.completed } },
                 [
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: task.completed,
+                        expression: "task.completed"
+                      }
+                    ],
                     attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(task.completed)
+                        ? _vm._i(task.completed, null) > -1
+                        : task.completed
+                    },
                     on: {
                       click: function($event) {
                         return _vm.updateDone(task.id, task.completed)
+                      },
+                      change: function($event) {
+                        var $$a = task.completed,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(task, "completed", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                task,
+                                "completed",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(task, "completed", $$c)
+                        }
                       }
                     }
                   }),
