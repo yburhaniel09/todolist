@@ -26,7 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //return view('home');
+        return view('home');
+    }
+
+    /**
+     * Gets resource in storage
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function read()
+    {
         return response(Todo::all()->jsonSerialize(), Response::HTTP_OK);
     }
 
