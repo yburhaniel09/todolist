@@ -22,4 +22,4 @@ Route::post('/cruds/create', 'HomeController@store');
 Route::get('/cruds/edit/{id}', 'HomeController@edit');
 Route::post('/cruds/update/{id}', 'HomeController@update');
 Route::post('/cruds/delete/{id}', 'HomeController@delete');
-Route::get('/cruds', 'HomeController@read');
+Route::post('/cruds', 'HomeController@read');
