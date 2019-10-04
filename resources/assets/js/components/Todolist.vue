@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     read() {
-      window.axios.get('/api/cruds', this.$userId).then(({ data }) => {
+      window.axios.get('/api/cruds', {userid: this.$userId}).then(({ data }) => {
         data.forEach(crud => {
           this.tasks.push({
             id: crud.id,
@@ -51,19 +51,12 @@ export default {
     },
     addTask() {
       if (this.newTask) {
-        let addtask = {
-          title: this.newTask,
-          completed: false,
-          id: taskId++,
-          edit: false
-        };
-        this.tasks.push(addtask);
         window.axios.post('/api/cruds/create', {
           title: this.newTask,
           completed: false,
           userId: this.$userId
         }).then((response) => {
-          //this.$router.push({name: 'cruds'});
+          this.$router.push({name: 'cruds'});
           console.log('Success');
         });
       }

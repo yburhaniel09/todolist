@@ -36,7 +36,7 @@ class HomeController extends Controller
      */
     public function read(Request $request)
     {
-        return response(Todo::where('userid', $request->userid)->get()->jsonSerialize(), Response::HTTP_OK);
+        return response(Todo::where('userid', $request->userid)->sortByAsc('id')->get()->jsonSerialize(), Response::HTTP_OK);
     }
 
     /**

@@ -45076,7 +45076,7 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
     read: function read() {
       var _this = this;
 
-      window.axios.get('/api/cruds', this.$userId).then(function (_ref) {
+      window.axios.get('/api/cruds', { userid: this.$userId }).then(function (_ref) {
         var data = _ref.data;
 
         data.forEach(function (crud) {
@@ -45090,42 +45090,37 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
       });
     },
     addTask: function addTask() {
+      var _this2 = this;
+
       if (this.newTask) {
-        var addtask = {
-          title: this.newTask,
-          completed: false,
-          id: taskId++,
-          edit: false
-        };
-        this.tasks.push(addtask);
         window.axios.post('/api/cruds/create', {
           title: this.newTask,
           completed: false,
           userId: this.$userId
         }).then(function (response) {
-          //this.$router.push({name: 'cruds'});
+          _this2.$router.push({ name: 'cruds' });
           console.log('Success');
         });
       }
     },
     update: function update(id, title) {
-      var _this2 = this;
+      var _this3 = this;
 
       window.axios.post('/api/cruds/update/' + id, { title: title }).then(function () {
-        _this2.tasks.find(function (task) {
+        _this3.tasks.find(function (task) {
           return task.id === id;
         }).edit = false;
         console.log('Success');
       });
     },
     del: function del(id) {
-      var _this3 = this;
+      var _this4 = this;
 
       window.axios.post('/api/cruds/delete/' + id).then(function () {
-        var index = _this3.tasks.findIndex(function (task) {
+        var index = _this4.tasks.findIndex(function (task) {
           return task.id === id;
         });
-        _this3.tasks.splice(index, 1);
+        _this4.tasks.splice(index, 1);
       });
     }
   },
