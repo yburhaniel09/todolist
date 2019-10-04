@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     read() {
-      window.axios.post('/api/cruds', {userid: this.$userId}).then(({ data }) => {
+      window.axios.get(`/api/cruds/${this.$userId}`).then(({ data }) => {
         this.tasks = [];
         data.forEach(crud => {
           this.tasks.push({

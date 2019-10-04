@@ -45073,7 +45073,7 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
     read: function read() {
       var _this = this;
 
-      window.axios.post('/api/cruds', { userid: this.$userId }).then(function (_ref) {
+      window.axios.get('/api/cruds/' + this.$userId).then(function (_ref) {
         var data = _ref.data;
 
         _this.tasks = [];
