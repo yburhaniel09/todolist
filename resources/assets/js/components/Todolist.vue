@@ -15,7 +15,7 @@
                 <input class="taskList" v-if="task.edit == true" type="text" v-model="task.title"/>
                 <button class="button" @click="task.edit = true" v-if="task.edit == false">Edit</button>
                 <button class="button" @click="update(task.id, task.title)" v-if="task.edit == true">Save</button>
-                <button class="button" @click="removeTask(task.id)">Delete</button>
+                <button class="button" @click="del(task.id)">Delete</button>
             </li>
         </div>
 
@@ -67,15 +67,16 @@ export default {
         });
       }
     },
-    removeTask (index) {
-      this.tasks = this.tasks.filter(task => {
-        return task.id !== index
-      })
-    },
     update(id, title) {
       window.axios.post(`/api/cruds/update/${id}`, { title }).then(() => {
         this.tasks.find(task => task.id === id).edit = false;
         console.log('Success');
+      });
+    },
+    del(id) {
+    window.axios.delete(`/api/cruds/delete/${id}`).then(() => {
+        let index = this.tasks.findIndex(task => task.id === id);
+        this.tasks.splice(index, 1);
       });
     }
   },

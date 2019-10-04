@@ -45107,11 +45107,6 @@ var taskId = 0;
         });
       }
     },
-    removeTask: function removeTask(index) {
-      this.tasks = this.tasks.filter(function (task) {
-        return task.id !== index;
-      });
-    },
     update: function update(id, title) {
       var _this2 = this;
 
@@ -45120,6 +45115,16 @@ var taskId = 0;
           return task.id === id;
         }).edit = false;
         console.log('Success');
+      });
+    },
+    del: function del(id) {
+      var _this3 = this;
+
+      window.axios.delete('/api/cruds/delete/' + id).then(function () {
+        var index = _this3.tasks.findIndex(function (task) {
+          return task.id === id;
+        });
+        _this3.tasks.splice(index, 1);
       });
     }
   },
@@ -45238,7 +45243,7 @@ var render = function() {
               staticClass: "button",
               on: {
                 click: function($event) {
-                  return _vm.removeTask(task.id)
+                  return _vm.del(task.id)
                 }
               }
             },

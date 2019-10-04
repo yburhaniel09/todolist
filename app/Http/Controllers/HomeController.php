@@ -104,6 +104,7 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Todo::destroy($id);
+        return response(null, Response::HTTP_OK);
     }
 }
