@@ -34,9 +34,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function read()
+    public function read(Request $request)
     {
-        return response(Todo::all()->jsonSerialize(), Response::HTTP_OK);
+        return response(Todo::where('userid', $request->userid)->get()->jsonSerialize(), Response::HTTP_OK);
     }
 
     /**

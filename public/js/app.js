@@ -45076,7 +45076,7 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
     read: function read() {
       var _this = this;
 
-      window.axios.get('/api/cruds').then(function (_ref) {
+      window.axios.get('/api/cruds', this.$userId).then(function (_ref) {
         var data = _ref.data;
 
         data.forEach(function (crud) {
@@ -45101,7 +45101,7 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
         window.axios.post('/api/cruds/create', {
           title: this.newTask,
           completed: false,
-          userId: "1"
+          userId: this.$userId
         }).then(function (response) {
           //this.$router.push({name: 'cruds'});
           console.log('Success');
@@ -45131,7 +45131,6 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
   },
   created: function created() {
     this.read();
-    console.log(this.$userId);
   }
 });
 
