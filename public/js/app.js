@@ -45098,7 +45098,7 @@ Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttrib
           completed: false,
           userId: this.$userId
         }).then(function (response) {
-          _this2.$router.push({ name: 'cruds' });
+          _this2.read();
           console.log('Success');
         });
       }

@@ -56,7 +56,7 @@ export default {
           completed: false,
           userId: this.$userId
         }).then((response) => {
-          this.$router.push({name: 'cruds'});
+          this.read();
           console.log('Success');
         });
       }
