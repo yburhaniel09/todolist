@@ -45062,6 +45062,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 var taskId = 0;
+Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -45130,6 +45131,7 @@ var taskId = 0;
   },
   created: function created() {
     this.read();
+    console.log(this.$userId);
   }
 });
 

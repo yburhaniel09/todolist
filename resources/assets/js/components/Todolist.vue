@@ -27,6 +27,7 @@
 
 <script>
 let taskId = 0
+Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
 export default {
   data () {
@@ -82,6 +83,7 @@ export default {
   },
   created() {
     this.read();
+    console.log(this.$userId);
   }
 }
 </script>
