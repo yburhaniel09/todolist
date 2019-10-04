@@ -64,7 +64,6 @@ export default {
           edit: false
         };
         this.tasks.push(addtask);
-        //this.newTask = '';
         window.axios.post('/api/cruds/create', {
           title: this.newTask,
           completed: false,
@@ -85,7 +84,7 @@ export default {
     }
   },
   created() {
-    //this.read();
+    this.read();
   }
 }
 </script>
